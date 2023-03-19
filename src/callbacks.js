@@ -1,21 +1,27 @@
- 
-   // Define a getEmployee function that iterates over the employees list and displays it
-   // Employees must be displayed after a timeout of 1 second.
+    // the callbacks are in the test script
+
    getEmployee = (employees,callback)=> {
-       setTimeout(() => {        
-           // Write code here to display the name of the employee and return a callback        
-           return callback();           
-       });
+       /**
+        * iterates over the employees list and displays it after a timeout of 1 second.
+        */
+       setTimeout(() => {
+           let employeesNames = employees.map(employee => employee.name);
+           const error = undefined;
+           return callback(error, employeesNames);
+       }, 1000);
    }
    
-   // Define a function that creates a new employee after 2 seconds.
-   // and then makes a call to callback function to display the same.
-   createEmployee = (employees,employee, callback) => {   
+
+   createEmployee = (employees,employee, callback) => {
+       /**
+        * creates a new employee after 2 seconds then, makes a call to callback function to display the same.
+        */
        setTimeout(()=>
        {
-           // write your code here to push new employee to employees list and return a callback.           
-           return callback();
-       })
+           employees.push(employee);
+           const error = undefined;
+           return callback(error, employees);
+       }, 2000)
    }  
 
    module.exports = {getEmployee,createEmployee}
